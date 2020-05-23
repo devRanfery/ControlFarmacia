@@ -1,0 +1,49 @@
+/* No CSS */ /*# sourceMappingURL=style.css.map */
+.navbar {
+	justify-content: flex-start;
+}
+.bg-nav {
+	background-color: #35475e;
+}
+
+.logo {
+	width: 70px;
+	height: 70px;
+}
+
+/*SECCION DE PRODUCTOS*/
+.card {
+	border-radius: 10px;
+}
+
+.card-img-top {
+	border-radius: 10px 10px 0px 0px;
+}
+
+.product-price {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	color: white;
+	padding: 5px;
+	background-color: #b11010;
+	border-radius: 0px 10px 0px 0px;
+}
+
+.card-title {
+	height: 70px;
+}
+
+.group-cantidad {
+	display: flex;
+}
+
+/*FOOTER*/
+.btn-regresar {
+	margin-right: 10px;
+}
+
+/* ASIDE */
+/* .products-wrapper .row .asideCaja {
+
+} */
