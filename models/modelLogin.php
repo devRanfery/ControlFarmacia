@@ -35,7 +35,7 @@ session_start();
 			$_SESSION['lastName']=$f2['apellido'];
 
 
-			header("Location: ../cajero/cajero1/index.php");
+			header("Location: ../cajero/index.php");
 			
 		}else{
 			echo '<script>alert("CONTRASEÑA INCORRECTA O USUARIO NO ESTA ACTIVO")</script> ';

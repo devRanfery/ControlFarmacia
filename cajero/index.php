@@ -21,7 +21,7 @@ if (!isset($_SESSION['Id_Cuenta'])) {
     "empleado" => "$idUser"
     );
 
-    include_once('../../controllers/cuentasController.php');
+    include_once('../controllers/cuentasController.php');
     $instCuentas = new cuentasController();
     $cuentas = $instCuentas->SaveorUpdateCuentas($dataCuenta);
 
@@ -56,7 +56,7 @@ if (!isset($_SESSION['Id_Cuenta'])) {
       <span class="navbar-brand" style="padding-top:0px;">Farmacia</span>
     </div>
     <div class="sesion">
-      <a href="../../ajax/CerrarSesion.php" class="btn btn-primary">Cerrar Sesion</a>
+      <a href="../ajax/CerrarSesion.php" class="btn btn-primary">Cerrar Sesion</a>
     </div>
 
   </nav>

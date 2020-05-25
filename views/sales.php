@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,7 +23,9 @@
   <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
   <!-- Bootstrap CSS-->
-  <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+  <!-- CSS only -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
   <!-- Vendor CSS-->
   <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -72,51 +78,17 @@
                 Agregar
               </button>
             </div>
+
+            <div class="formulario">
+              <input class="form-control" type="text" name="caja_busqueda" id="caja_busqueda"
+                placeholder="Buscar"></input>
+            </div>
+            <br>
+
             <div class="row">
               <div class="col-lg-12">
-                <div class="table-responsive  m-b-40">
-                  <table class="table table-borderless table-striped table-earning">
-                    <thead>
-                      <tr>
-                        <th class="text-center">Descripcion</th>
-                        <th class="text-center">Categoria</th>
-                        <th class="text-center">Precio</th>
-                        <th class="text-center">Cantidad</th>
-                        <th class="text-center">Estado</th>
-                        <th class="text-center">Imagen</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- TABLA DE PRODUCTOS DE LA BASE DE DATOS -->
-                      <?php
-                      foreach($listProduct as $producto){?>
-                      <tr>
-                        <td class="text-center"><?php echo $producto['descripcion']?></td>
-                        <td class="text-center"><?php echo $producto['Id_cat']?></td>
-                        <td class="text-center"><?php echo $producto['precio']?></td>
-                        <td class="text-center"><?php echo $producto['cantidad']?></td>
-                        <td class="text-center"><?php echo $producto['estado']?></td>
-                        <td><img src="<?php echo $producto['Imagen']?>" alt="" style="width:50px; height:50px;"></td>
-                        <td>
-                          <div class="table-data-feature">
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                              <i class="zmdi zmdi-edit"></i>
-                            </button>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="table-data-feature">
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                              <i class="zmdi zmdi-delete"></i>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                <div class="table-responsive  m-b-40" id="datos">
+
                 </div>
               </div>
             </div>
@@ -226,10 +198,14 @@
   <!-- end modal medium -->
 
   <!-- Jquery JS-->
-  <script src="vendor/jquery-3.2.1.min.js"></script>
+  <script src="../cajero/js/jquery.min.js"></script>
   <!-- Bootstrap JS-->
-  <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-  <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </script>
   <!-- Vendor JS       -->
   <script src="vendor/slick/slick.min.js">
   </script>
@@ -248,6 +224,7 @@
 
   <!-- Main JS-->
   <script src="js/main.js"></script>
+  <script src="js/searchSales.js"></script>
 
 </body>
 

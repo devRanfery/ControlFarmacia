@@ -17,7 +17,7 @@
             <i class="fab fa-product-hunt"></i>Productos</a>
         </li>
         <li>
-          <a href="table.html">
+          <a href="sales.php">
             <i class="fas fa-table"></i>Ventas</a>
         </li>
         <li>

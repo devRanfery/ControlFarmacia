@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../models/modelVentas.php');
+require_once('../models/modelVentas.php');
 
 class ventasController{
 

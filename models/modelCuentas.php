@@ -1,6 +1,6 @@
 <?php
 
-include_once('../../db/conect_db.php');
+include_once('../db/conect_db.php');
 
 class cuentasModel extends Connection{
 
@@ -32,6 +32,23 @@ public function SaveorUpdateCuentas($data){
   }
   return $tabla;
 }
+
+public function GetAllAccountByDate(){
+  $conex = new Connection();
+  $conex = $conex->Conexion();
+
+  $sql = "CALL AllAccountsByDate";
+  $result = mysqli_query($conex, $sql);
+
+  $tabla = [];
+  $i = 0;
+  while ($fila = mysqli_fetch_array($result)) {
+    $tabla[$i] = $fila;
+    $i++;
+  }
+  return $tabla;
+}
+
 
 
 }

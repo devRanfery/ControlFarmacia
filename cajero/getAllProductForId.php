@@ -1,5 +1,5 @@
 <?php
- require_once('../../controllers/productosController.php');
+ require_once('../controllers/productosController.php');
  $id =  $_POST['id'];
 
         $instProductos = new productosController();

@@ -151,7 +151,7 @@ $(document).ready(function () {
         var IdPro = cod;
         $.ajax({
             //url: 'https://jquerycrud-ed8dc.firebaseio.com/products/.json',
-            url: '../../ajax/getAllProductForId.php',
+            url: 'getAllProductForId.php',
             dataType: "json",
             method: 'POST',
             data: { "id": IdPro },

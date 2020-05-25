@@ -74,9 +74,17 @@ session_start();
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
-            <?php print_r($_SESSION);
-            print_r( $_SESSION );
-             ?>
+            <?php 
+            // print_r($_SESSION);
+            // print_r( $_SESSION );
+
+            require_once('../models/SelectTotal.php');
+            $selectTotal = new SelectTotal();
+            $TotalUsuarios = $selectTotal->TotalUsuarios();
+            $TotalCuentas = $selectTotal->TotalCuentas();
+            $TotalVentas = $selectTotal->TotalVentas();
+            $TotalGananciasForDate = $selectTotal->TotalCuentasFecha();
+            ?>
             <div class="row">
               <div class="col-md-12">
                 <div class="overview-wrap">
@@ -93,7 +101,7 @@ session_start();
                         <i class="zmdi zmdi-account-o"></i>
                       </div>
                       <div class="text">
-                        <h2>10368</h2>
+                        <h2><?php echo $TotalUsuarios; ?></h2>
                         <span>Usuarios Activos</span>
                       </div>
                     </div>
@@ -111,8 +119,8 @@ session_start();
                         <i class="zmdi zmdi-shopping-cart"></i>
                       </div>
                       <div class="text">
-                        <h2>388,688</h2>
-                        <span>items solid</span>
+                        <h2><?php echo $TotalCuentas; ?></h2>
+                        <span>Cuentas Activas</span>
                       </div>
                     </div>
                     <div class="overview-chart">
@@ -129,8 +137,8 @@ session_start();
                         <i class="zmdi zmdi-calendar-note"></i>
                       </div>
                       <div class="text">
-                        <h2>1,086</h2>
-                        <span>Esta Semana</span>
+                        <h2><?php echo $TotalVentas; ?></h2>
+                        <span>Ventas Totales</span>
                       </div>
                     </div>
                     <div class="overview-chart">
@@ -147,8 +155,8 @@ session_start();
                         <i class="zmdi zmdi-money"></i>
                       </div>
                       <div class="text">
-                        <h2>$1,060,386</h2>
-                        <span>Ganancias Totales</span>
+                        <h2>$<?php echo number_format((float)$TotalGananciasForDate, 2, '.', ''); ?></h2>
+                        <span>Ganancias por dia</span>
                       </div>
                     </div>
                     <div class="overview-chart">
@@ -160,84 +168,36 @@ session_start();
             </div>
             <div class="row">
               <div class="col-lg-12">
-                <h2 class="title-1 m-b-25">Ventas</h2>
+                <?php
+                  include_once('../controllers/cuentasController.php');
+                  $instCuentas = new cuentasController();
+                  $listCuentas = $instCuentas->GetAllAccountByDate();
+                ?>
+                <h2 class="title-1 m-b-25">Cuentas de Hoy</h2>
                 <div class="table-responsive table--no-card m-b-40">
                   <table class="table table-borderless table-striped table-earning">
                     <thead>
                       <tr>
-                        <th>date</th>
-                        <th>order ID</th>
-                        <th>name</th>
-                        <th class="text-right">price</th>
-                        <th class="text-right">quantity</th>
-                        <th class="text-right">total</th>
+                        <th class="text-center">Cuenta</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Subtotal</th>
+                        <th class="text-center">Descuento</th>
+                        <th class="text-center">Total</th>
+                        <th class="text-right">Comentario</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <?php
+                    foreach($listCuentas as $cuentas){?>
                       <tr>
-                        <td>2018-09-29 05:57</td>
-                        <td>100398</td>
-                        <td>iPhone X 64Gb Grey</td>
-                        <td class="text-right">$999.00</td>
-                        <td class="text-right">1</td>
-                        <td class="text-right">$999.00</td>
+                        <td class="text-center"><?php echo $cuentas['idcuentas']?></td>
+                        <td class="text-center"><?php echo $cuentas['fecha']?></td>
+                        <td class="text-center">$<?php echo $cuentas['subtotal']?></td>
+                        <td class="text-center">$<?php echo $cuentas['descuento']?></td>
+                        <td class="text-center">$<?php echo $cuentas['total']?></td>
+                        <td class="text-center"><?php echo $cuentas['comentario']?></td>
                       </tr>
-                      <tr>
-                        <td>2018-09-28 01:22</td>
-                        <td>100397</td>
-                        <td>Samsung S8 Black</td>
-                        <td class="text-right">$756.00</td>
-                        <td class="text-right">1</td>
-                        <td class="text-right">$756.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-27 02:12</td>
-                        <td>100396</td>
-                        <td>Game Console Controller</td>
-                        <td class="text-right">$22.00</td>
-                        <td class="text-right">2</td>
-                        <td class="text-right">$44.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-26 23:06</td>
-                        <td>100395</td>
-                        <td>iPhone X 256Gb Black</td>
-                        <td class="text-right">$1199.00</td>
-                        <td class="text-right">1</td>
-                        <td class="text-right">$1199.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-25 19:03</td>
-                        <td>100393</td>
-                        <td>USB 3.0 Cable</td>
-                        <td class="text-right">$10.00</td>
-                        <td class="text-right">3</td>
-                        <td class="text-right">$30.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-29 05:57</td>
-                        <td>100392</td>
-                        <td>Smartwatch 4.0 LTE Wifi</td>
-                        <td class="text-right">$199.00</td>
-                        <td class="text-right">6</td>
-                        <td class="text-right">$1494.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-24 19:10</td>
-                        <td>100391</td>
-                        <td>Camera C430W 4k</td>
-                        <td class="text-right">$699.00</td>
-                        <td class="text-right">1</td>
-                        <td class="text-right">$699.00</td>
-                      </tr>
-                      <tr>
-                        <td>2018-09-22 00:43</td>
-                        <td>100393</td>
-                        <td>USB 3.0 Cable</td>
-                        <td class="text-right">$10.00</td>
-                        <td class="text-right">3</td>
-                        <td class="text-right">$30.00</td>
-                      </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>

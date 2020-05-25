@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../models/modelCuentas.php');
+require_once('../models/modelCuentas.php');
 
 class cuentasController{
 
@@ -13,6 +13,13 @@ class cuentasController{
     $instCuentas = new cuentasModel();
     return $instCuentas->SaveorUpdateCuentas($data);
     }
+
+    public function GetAllAccountByDate(){
+        $instCuentas = new cuentasModel();
+        return $instCuentas->GetAllAccountByDate();
+    }
+
+
     
 
     // public function GetAllProductsForId($id){
